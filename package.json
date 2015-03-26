@@ -1,0 +1,30 @@
+{
+  "name": "swf-utils",
+  "version": "0.0.1",
+  "description": "Node.js utilities for AWS SWF.",
+  "main": "index.js",
+  "author": "Andrew Hallock <andrew.hallock@gmail.com>",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ahallock/swf-utils.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1.18",
+    "bluebird": "^2.9.14",
+    "limiter": "^1.0.5"
+  },
+  "devDependencies": {
+    "expect": "^1.6.0",
+    "mocha": "^2.2.1",
+    "nock": "^1.2.1"
+  },
+   "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/ahallock/node-ironio/raw/master/LICENSE"
+    }
+  ]
+}
