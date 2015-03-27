@@ -1,5 +1,6 @@
-var expect = require('expect');
+var expect = require('expect.js');
 var nock = require('nock');
+var sinon = require('sinon');
 
 process.env.AWS_DEFAULT_REGION = 'us-east-1';
 process.env.AWS_SWF_DOMAIN = 'domain';
@@ -40,39 +41,23 @@ describe('poller', function() {
 
   describe('#poll', function() {
     it('calls the decide function', function(done) {
-      function decide() {
-        return new Promise(function(resolve) {
-          setImmediate(function() {
-            resolve();
-            done();
-          });
-        });
-      }
+      function decide() { done(); }
 
       var p = poll('activity', 'task-list', decide)
-        .cancellable()
         .catch(Promise.CancellationError, function(e){})
         .cancel();
     });
 
     it('rate limits decide calls', function(done) {
       var counter = 0;
-      function decide() {
-        return new Promise(function(resolve) {
-          setImmediate(function() {
-            counter++;
-            resolve();
-          });
-        });
-      }
+      function decide() { counter++; };
 
       var p = poll('activity', 'task-list', decide, 1, 250)
-        .cancellable()
         .catch(Promise.CancellationError, function(e){});
 
-      expect(counter).toBe(0);
+      expect(counter).to.be(0);
       setTimeout(function() {
-        expect(counter).toBe(2);
+        expect(counter).to.be(2);
         p.cancel();
         done();
       }, 500);
@@ -82,25 +67,25 @@ describe('poller', function() {
       nock.cleanAll();
       setupNock('decision');
       var p = poll('decision', 'task-list', function(){ p.cancel(); })
-        .cancellable()
         .catch(Promise.CancellationError, function(e){});
       done();
     });
 
     context('no task', function() {
       it('skips decide', function(done) {
-        var count = 0;
-        function decide() { count++ };
+        var spy = sinon.spy();
         nock.cleanAll();
         setupNock('activity', {});
-        var p = poll('activity', 'task-list', decide, 1, 250)
-          .cancellable()
+        var p = poll('activity', 'task-list', spy)
           .catch(Promise.CancellationError, function(e){});
+
+        // TODO: find easier way to determine if loop
+        //       has executed at least once
         setTimeout(function() {
-          expect(count).toEqual(0);
           p.cancel();
+          expect(spy.callCount).to.be(0);
           done();
-        }, 100);
+        }, 200);
       });
     });
   });

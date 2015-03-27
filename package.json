@@ -17,11 +17,12 @@
     "limiter": "^1.0.5"
   },
   "devDependencies": {
-    "expect": "^1.6.0",
+    "expect.js": "^0.3.1",
     "mocha": "^2.2.1",
-    "nock": "^1.2.1"
+    "nock": "^1.2.1",
+    "sinon": "^1.14.1"
   },
-   "licenses": [
+  "licenses": [
     {
       "type": "MIT",
       "url": "http://github.com/ahallock/node-ironio/raw/master/LICENSE"
