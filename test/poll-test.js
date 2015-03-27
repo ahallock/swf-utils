@@ -9,7 +9,7 @@ process.env.AWS_SECRET_ACCESS_KEY = 'abc';
 var poll = require('../lib/poll');
 var Promise = require('bluebird');
 
-function setupNock(taskType) {
+function setupNock(taskType, replyJson) {
   taskType || (taskType = 'activity')
   var amzTargetHeader;
   if (taskType === 'activity') {
@@ -24,12 +24,12 @@ function setupNock(taskType) {
       return '*';
     })
     .post('/', '*')
-    .reply(200);
+    .reply(200, replyJson);
 }
 
 describe('poller', function() {
   beforeEach(function(done) {
-    setupNock();
+    setupNock('activity', { taskToken: '123' });
     done();
   });
 
@@ -85,6 +85,23 @@ describe('poller', function() {
         .cancellable()
         .catch(Promise.CancellationError, function(e){});
       done();
+    });
+
+    context('no task', function() {
+      it('skips decide', function(done) {
+        var count = 0;
+        function decide() { count++ };
+        nock.cleanAll();
+        setupNock('activity', {});
+        var p = poll('activity', 'task-list', decide, 1, 250)
+          .cancellable()
+          .catch(Promise.CancellationError, function(e){});
+        setTimeout(function() {
+          expect(count).toEqual(0);
+          p.cancel();
+          done();
+        }, 100);
+      });
     });
   });
 });
