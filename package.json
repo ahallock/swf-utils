@@ -1,6 +1,6 @@
 {
   "name": "swf-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js utilities for AWS SWF.",
   "main": "index.js",
   "author": "Andrew Hallock <andrew.hallock@gmail.com>",
