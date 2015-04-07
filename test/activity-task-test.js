@@ -1,6 +1,5 @@
 var expect = require('expect.js');
 var nock = require('nock');
-var sinon = require('sinon');
 
 process.env.AWS_DEFAULT_REGION = 'us-east-1';
 process.env.AWS_SWF_DOMAIN = 'domain';

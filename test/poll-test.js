@@ -1,8 +1,7 @@
 require('./helper');
 var expect = require('expect.js');
 var nock = require('nock');
-var sinon = require('sinon');
-var poller = require('../lib/poller');
+var poll = require('../lib/poll');
 
 describe('Poller', function() {
   afterEach(function(done) {
@@ -23,12 +22,12 @@ describe('Poller', function() {
         .reply(200, {
           taskToken: '123'   
         });
-      var p = poller.pollForActivity('mylist');
-      p.on('task', function(task) {
-        expect(task.taskToken).to.eql('123');
-        p.stop();
-        done();
-      }); 
+      var unsub = poll('activity', 'mylist')
+        .onValue(function(task) {
+          expect(task.taskToken).to.eql('123');
+          unsub();
+          done();
+        });
     });
   });
 });
