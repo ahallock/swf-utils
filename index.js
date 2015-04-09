@@ -1,3 +1,3 @@
 module.exports = {
-  poll: require('./lib/poll')
+  poller: require('./lib/poller')
 };

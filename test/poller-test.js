@@ -1,7 +1,14 @@
 require('./helper');
 var expect = require('expect.js');
 var nock = require('nock');
-var poll = require('../lib/poll');
+var Poller = require('../lib/poller');
+
+var params = {
+  domain: 'domain',
+  taskList: {
+    name: 'mylist' 
+  }
+}
 
 describe('Poller', function() {
   afterEach(function(done) {
@@ -9,25 +16,22 @@ describe('Poller', function() {
     done();
   });
 
-  describe('#pollForActivity', function() {
+  describe('#on', function() {
     it('emits activity data', function(done) {
       nock('https://swf.us-east-1.amazonaws.com')
         .matchHeader('X-Amz-Target', 'SimpleWorkflowService.PollForActivityTask')
-        .post('/', {
-          domain: 'domain',
-          taskList: {
-            name: 'mylist' 
-          }
-        })
+        .post('/', params)
         .reply(200, {
           taskToken: '123'   
         });
-      var unsub = poll('activity', 'mylist')
-        .onValue(function(task) {
-          expect(task.taskToken).to.eql('123');
-          unsub();
-          done();
-        });
+      var poller = new Poller('activity', params);
+      poller.start();
+      poller.on('task', function(task) {
+        expect(task.taskToken).to.eql('123');
+        poller.stop();
+        done();
+      });
     });
   });
+
 });
