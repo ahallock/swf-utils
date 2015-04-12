@@ -1,7 +1,7 @@
 require('./helper');
 var expect = require('expect.js');
 var nock = require('nock');
-var Poller = require('../lib/poller');
+var poll = require('../lib/poll');
 
 var params = {
   domain: 'domain',
@@ -24,12 +24,12 @@ describe('Poller', function() {
         .reply(200, {
           taskToken: '123'   
         });
-      var poller = new Poller('activity', params);
-      poller.start();
-      poller.on('task', function(task) {
+      var p = poll('activity', params);
+      p.start();
+      p.onTask(function(task) {
         expect(task.taskToken).to.eql('123');
-        poller.stop();
-        done();
+        p.stop();
+        p.onEnd(done);
       });
     });
   });
