@@ -4,7 +4,7 @@ module.exports = [
     eventType: 'ActivityTaskScheduled',
     activityTaskScheduledEventAttributes: {
       activityId: 'activity3',
-      activityType: 'type3'
+      activityType: { name: 'type3', version: '1' }
     }
   },  
   {
@@ -26,7 +26,7 @@ module.exports = [
     eventType: 'ActivityTaskScheduled',
     activityTaskScheduledEventAttributes: {
       activityId: 'activity1',
-      activityType: 'type1'
+      activityType: { name: 'type1', version: '1' }
     }
   },  
   {
@@ -34,7 +34,7 @@ module.exports = [
     eventType: 'ActivityTaskScheduled',
     activityTaskScheduledEventAttributes: {
       activityId: 'activity2',
-      activityType: 'type2'
+      activityType: { name: 'type2', version: '1' }
     }
   },  
   {
@@ -49,7 +49,7 @@ module.exports = [
     eventType: 'ActivityTaskScheduled',
     activityTaskScheduledEventAttributes: {
       activityId: 'activity1',
-      activityType: 'type1'
+      activityType: { name: 'type1', version: '1' }
     }
   },
   {
