@@ -1,8 +1,16 @@
 module.exports = [
   {
+    eventId: 8,
+    eventType: 'ActivityTaskScheduled',
+    activityTaskScheduledEventAttributes: {
+      activityId: 'activity3',
+      activityType: 'type3'
+    }
+  },  
+  {
     eventId: 7,
-    eventType: 'ActivityTaskFailed',
-    activityTaskFailedEventAttributes: {
+    eventType: 'ActivityTaskTimedOut',
+    activityTaskTimedOutEventAttributes: {
       scheduledEventId: 4
     }
   },  
