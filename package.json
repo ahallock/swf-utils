@@ -12,15 +12,20 @@
     "url": "git://github.com/ahallock/swf-utils.git"
   },
   "dependencies": {
+    "alasql": "0.0.50",
     "aws-sdk": "^2.1.18",
+    "baconjs": "^0.7.53",
     "bluebird": "^2.9.14",
     "limiter": "^1.0.5",
-    "lodash": "^3.6.0"
+    "ramda": "^0.13.0",
+    "string": "^3.1.1",
+    "underscore.string": "^3.0.3"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^2.2.1",
-    "nock": "^1.2.1"
+    "nock": "^1.2.1",
+    "sinon": "^1.14.1"
   },
   "licenses": [
     {
