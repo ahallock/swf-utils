@@ -1,4 +1,4 @@
 # swf-utils
-Node.js utilities for AWS SWF.
+AWS SWF utils for Node.js
 
-This lib is the early planning stages, and shouldn't be used for anything serious yet.
+This lib is completey experimental at the moment.
