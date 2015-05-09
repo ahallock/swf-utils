@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var getWorkflowInput = require('../lib/get-workflow-input');
+var getWorkflowInput = require('../get-workflow-input');
 var R = require('ramda');
 
 describe('get workflow input', function() {

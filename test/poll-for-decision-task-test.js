@@ -9,7 +9,7 @@ var swfPollForDecisionTask = Promise.promisify(swf.pollForDecisionTask, swf);
 var expect = require('expect.js');
 var nock = require('nock');
 var R = require('ramda');
-var pollForDecisionTask = require('../lib/poll-for-decision-task');
+var pollForDecisionTask = require('../poll-for-decision-task');
 
 describe('swf api helpers', function() {
   after(function(done) {

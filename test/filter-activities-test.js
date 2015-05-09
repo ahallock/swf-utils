@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var filterActivities = require('../lib/filter-activities');
+var filterActivities = require('../filter-activities');
 var R = require('ramda');
 
 var activities = [

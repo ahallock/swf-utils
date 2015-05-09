@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var createActivityMap = require('../lib/activity-map');
+var createActivityMap = require('../activity-map');
 var events = require('./events');
 var activityMap = createActivityMap(events);
 

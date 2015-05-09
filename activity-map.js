@@ -50,6 +50,7 @@ function createActivityInfoIndex(events, eventsIndex) {
       attempts: counts['ActivityTaskScheduled'],
       activityType: activity.activityType,
       activityId: activity.activityId,
+      input: activity.input,
       attrs: activity
     }
   }, activities);

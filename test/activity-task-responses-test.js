@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var activityTaskResponses = require('../lib/activity-task-responses');
+var activityTaskResponses = require('../activity-task-responses');
 
 describe('activityTaskResponses', function() {
   describe('#complete', function() {

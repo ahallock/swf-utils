@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var filterEvents = require('../lib/filter-events');
+var filterEvents = require('../filter-events');
 var events = require('./events');
 var R = require('ramda');
 
