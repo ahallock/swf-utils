@@ -22,6 +22,3 @@ describe('get workflow input', function() {
     expect(input).to.be('foo bar');
   });
 });
-
-
-
