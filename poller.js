@@ -25,9 +25,9 @@ var poll = function(pollFn, params, fn) {
       return Promise.resolve(task)
         .then(fn)
         .then(function(res) {
-        var responseFn = responseMap[res.constructor.name];
-        return responseFn(R.merge({ taskToken: task.taskToken }, res));
-      });
+          var responseFn = responseMap[res.constructor.name];
+          return responseFn(R.merge({ taskToken: task.taskToken }, res));
+        });
     });
 }
 
