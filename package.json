@@ -12,14 +12,12 @@
     "url": "git://github.com/ahallock/swf-utils.git"
   },
   "dependencies": {
-    "alasql": "0.0.50",
     "aws-sdk": "^2.1.18",
-    "baconjs": "^0.7.53",
-    "bluebird": "^2.9.14",
-    "limiter": "^1.0.5",
+    "bluebird": "^2.9.30",
     "ramda": "^0.13.0",
     "string": "^3.1.1",
-    "underscore.string": "^3.0.3"
+    "underscore.string": "^3.1.1",
+    "underscore.string.fp": "^1.0.4"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",

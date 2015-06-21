@@ -1,4 +1,6 @@
-module.exports = [
+var R = require('ramda');
+
+module.exports = R.reverse([
   {
     eventId: 8,
     eventType: 'ActivityTaskScheduled',
@@ -59,5 +61,5 @@ module.exports = [
       input: 'workflow input'
     }
   }  
-];
+]);
 
